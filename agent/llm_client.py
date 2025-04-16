@@ -196,7 +196,8 @@ class LLMClient:
         prompt = self.truncate_to_tokens(prompt, self.context_length)
         if self.provider == "groq":
             return self._query_groq(prompt)
-        elif self.provider == "openai":
+        elif self.provider == "openai" or self.provider == "openrouter":
+            # OpenRouter uses OpenAI compatible API
             return self._query_openai(prompt)
         elif self.provider == "ollama":
             return self._query_ollama(prompt)
